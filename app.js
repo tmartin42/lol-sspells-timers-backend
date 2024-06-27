@@ -34,20 +34,6 @@ const sSpellsRepo = require('./repos/sSpells.js')
 
 const { getSummonerAndChampions } = require('./services/ddragonApi.js')
 
-
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:8080"); // update to match the domain you will make the request from
-//   res.header("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS")
-//   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
-//   console.log(req)
-//   if (req.method == "OPTIONS") {
-//     res.header(response.ok)
-//     return
-//   }
-//   next();
-// });
-
-
 getSummonerAndChampions().then(({champions, sSpells}) => {
 
   championsRepo.set(champions)
@@ -68,7 +54,6 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
-
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   // render the error page

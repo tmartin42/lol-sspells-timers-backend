@@ -37,23 +37,24 @@ router.get('/', async function(req, res, next) {
   if (!champions.get().length || !sSpells.get().length)
     return res.send('error getting stuff');
     
-
+  console.log(req.query)
  // const playerInfo = await getPuuid('GBM Mimi', 'GBM');
 
  // if (!!!playerInfo || !!!playerInfo.puuid) //check if player exists
  //   return res.send('player not found')
 
   //const gameInfo = await getGame(playerInfo.puuid, 'euw1');
+    const gameInfo = null;
 
- // if (!!!gameInfo)
- //   return res.send('not in a game')
+  if (!!!gameInfo)
+    return res.status(404).send('not in a game')
 
-  const gameInfo = gameInfoJson;
+    gameInfo = gameInfoJson;
 
 
 
 //  console.log(gameInfoJson)
-  return res.send("wrong route, try /getPlayerGame");
+  return res.send(cleanGameInfo(gameInfo.participants, "sD1shWIdsPJ6WR64sulMhUm75GcOG8rWKqOHuA4v6Ggfz9CyougRMQHB2NBSbc0tg8OCie9hKXCHOw"));
  
 });
 
